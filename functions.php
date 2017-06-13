@@ -4,10 +4,6 @@
 $option = array(
     // we don't want no description
     'blogdescription'               => '',
-    // change category base
-    'category_base'                 => '/cat',
-    // change tag base
-    'tag_base'                      => '/label',
     // disable comments
     'default_comment_status'        => 'closed',
     // disable trackbacks
@@ -16,8 +12,6 @@ $option = array(
     'default_ping_status'           => 'closed',
     // disable pinging
     'default_pingback_flag'         => '',
-    // change the permalink structure
-    'permalink_structure'           => '/%postname%/',
     // dont use year/month folders for uploads
     'uploads_use_yearmonth_folders' => '',
     // don't use those ugly smilies
@@ -40,24 +34,18 @@ wp_delete_post( 2, TRUE );
 
 // we need to include the file below because the activate_plugin() function isn't normally defined in the front-end
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+
 // activate pre-bundled plugins
+activate_plugin("wordfence/wordfence.php");
+activate_plugin("admin-menu-editor/menu-editor.php");
+activate_plugin("minify-html-markup/minify-html.php");
+activate_plugin("wp-sanitize-file-name-plus");
 activate_plugin( 'wp-super-cache/wp-cache.php' );
 activate_plugin( 'wordpress-seo/wp-seo.php' );
-activate_plugin( 'contact-form-7/wp-contact-form-7.php' );
+activate_plugin( 'advanced-custom-fields-pro/acf.php' );
 
-// switch the theme to "Headliner"
-switch_theme( 'headliner' );
-
-function plugin_activation( $plugin ) {
-    if( ! function_exists('activate_plugin') ) {
-        require_once ABSPATH . 'wp-admin/includes/plugin.php';
-    }
-
-    if( ! is_plugin_active( $plugin ) ) {
-        activate_plugin( $plugin );
-    }
-}
-
+// switch the theme to "Meat Theme"
+switch_theme( 'meat-theme' );
 
 //rrmdir(__DIR__)
 
