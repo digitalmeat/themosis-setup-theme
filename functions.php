@@ -2,7 +2,6 @@
 
 
 addSaltsToEnv();
-die;
 
 // set the options to change
 $option = array(
