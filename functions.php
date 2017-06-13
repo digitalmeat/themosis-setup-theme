@@ -1,5 +1,9 @@
 <?php
 
+
+addSaltsToEnv();
+die;
+
 // set the options to change
 $option = array(
     // we don't want no description
@@ -62,4 +66,28 @@ function rrmdir($dir) {
         }
         rmdir($dir);
     }
+}
+
+function addSaltsToEnv()
+{
+    $secret_keys = wp_remote_get('https://api.wordpress.org/secret-key/1.1/salt/');
+    $secret_keys = explode("\n", wp_remote_retrieve_body($secret_keys));
+    foreach ($secret_keys as $k => $v) {
+        $secret_keys[$k] = substr($v, 28, 64);
+    }
+    $vars = [
+        'AUTH_KEY',
+        'SECURE_AUTH_KEY',
+        'LOGGED_IN_KEY',
+        'NONCE_KEY',
+        'AUTH_SALT',
+        'SECURE_AUTH_SALT',
+        'LOGGED_IN_SALT',
+        'NONCE_SALT'
+    ];
+    $str = "\n\n# Auto generated \n\n";
+    for ($i = 0; $i < count($vars); $i++) {
+        $str .= $vars[$i] . '="' . $secret_keys[$i] . '"' . "\n";
+    }
+    file_put_contents(ABSPATH . '../../.env', $str, FILE_APPEND);
 }
