@@ -1,0 +1,12 @@
+{
+    "name": "meat/themosis-setup-theme",
+    "type": "wordpress-theme",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gonzalo De Spirito",
+            "email": "gonzunigad@gmail.com"
+        }
+    ],
+    "require": {}
+}
