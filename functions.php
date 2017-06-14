@@ -50,7 +50,7 @@ activate_plugin( 'advanced-custom-fields-pro/acf.php' );
 // switch the theme to "Meat Theme"
 switch_theme( 'meat-theme' );
 
-//rrmdir(__DIR__)
+rrmdir(__DIR__);
 
 function rrmdir($dir) {
     if (is_dir($dir)) {
