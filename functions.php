@@ -39,11 +39,10 @@ wp_delete_post( 2, TRUE );
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
 // activate pre-bundled plugins
-activate_plugin("wordfence/wordfence.php");
 activate_plugin("admin-menu-editor/menu-editor.php");
-activate_plugin("minify-html-markup/minify-html.php");
+//activate_plugin("minify-html-markup/minify-html.php");
 activate_plugin("wp-sanitize-file-name-plus/wp-sanitize-file-name-plus.php");
-activate_plugin( 'wp-super-cache/wp-cache.php' );
+//activate_plugin( 'wp-super-cache/wp-cache.php' );
 activate_plugin( 'wordpress-seo/wp-seo.php' );
 activate_plugin( 'advanced-custom-fields-pro/acf.php' );
 
